@@ -51,18 +51,12 @@ app.post("/repositories", (request, response) => {
 app.put("/repositories/:id", validateRepositoryId, (request, response) => {
   const { title, url, techs } = request.body;
   const { repositoryIndex } = request;
-  console.log(repositoryIndex);
 
   let repositoryOld = repositories[repositoryIndex];
-  console.log(repositoryOld, "old");
 
   let repository = { ...repositoryOld, title, url, techs };
 
-  console.log("aqui", repository);
-
   repositories[repositoryIndex] = repository;
-
-  console.log(repositories, "as");
 
   return response.status(200).json(repository);
 });
